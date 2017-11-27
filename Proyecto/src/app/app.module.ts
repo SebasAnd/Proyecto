@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+import { LastMovieService } from './LastMoviesService/LastMoviesService';
 
 
 import { AppComponent } from './app.component';
@@ -10,9 +12,10 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [ LastMovieService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
