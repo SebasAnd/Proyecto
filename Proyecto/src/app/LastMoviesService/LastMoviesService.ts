@@ -20,8 +20,6 @@ export class LastMovieService {
 
   constructor(private http: Http) { }
 
-
-
   getMoviesNowPlaying() : Promise<any> {
 
     let discover = 'movie/now_playing';
