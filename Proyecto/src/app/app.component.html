@@ -5,17 +5,11 @@ The content below is only a placeholder and can be replaced.
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 <body>
 
-<div class="container">
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="..." alt="First slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="..." alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="..." alt="Third slide">
+<div class="container" >
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" >
+  <div class="carousel-inner" *ng For="let item of resultSlidertop.results">
+    <div class="carousel-item active" >
+      <img class="d-block w-100" src="https://image.tmdb.org/t/p/w1920{{resultSlidertop.results[0].backdrop_path}}" alt="First slide">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -60,9 +54,11 @@ The content below is only a placeholder and can be replaced.
     </form>
   </div>
 </nav>
-</div>
-  <div class="row  row-xs-6 row-sm-4 row-lg-20">
-<div class="col-xs-3 col-sm-4 col-lg-3"  *ngFor="let movie of result1.results">
+
+<div *ngIf = "result1">
+
+  <div class="row  row-xs-6 row-sm-3 row-lg-20">
+<div class="col-xs-3 col-sm-3 col-lg-3"  *ngFor="let movie of result1.results">
   <div class="card" style="width: 100%;">
     <img class="card-img-top" src="https://image.tmdb.org/t/p/w780/{{movie.poster_path}}" alt="Card image cap">
     <div class="card-body" >
@@ -73,9 +69,9 @@ The content below is only a placeholder and can be replaced.
   </div>
   </div>
   </div>
+</div>
 
-
-
+</div>
 
 
 
@@ -86,5 +82,3 @@ The content below is only a placeholder and can be replaced.
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-
-
