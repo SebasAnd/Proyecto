@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { LastMovieService } from '../LastMoviesService/LastMoviesService';
+import { PopularMoviesService } from './PopularMoviesService';
 
 @Component({
   selector: 'app-root',
@@ -10,23 +10,23 @@ import { LastMovieService } from '../LastMoviesService/LastMoviesService';
 export class PopularMovies {
   title = 'app';
   private Popular: Promise<any>;
-  private result: JSON;
-  private err: any;
+  private movies: JSON;
+  private error: any;
 
 
-  private Slidertop:Promise<any>;
+  private Slidertop: Promise<any>;
   private resultSlidertop: JSON;
   private errSlidertop: any;
 
 
-  constructor (private appservice: LastMovieService,private appserviceslider: LastMovieService){
+  constructor (private appservice: PopularMoviesService,private appserviceslider: PopularMoviesService){
 
     this.Popular = appservice.getPopularMovies();
     this.Popular.then(
 
-      ( val: any ) => {this.result = val; } ).catch(
+      ( val: any ) => {this.movies = val; } ).catch(
 
-      ( err: any ) => {this.err = 'Rejected with an error ' + err.toString(); }
+      ( err: any ) => {this.error = 'Rejected with an error ' + err.toString(); }
     );
 
     this.Slidertop = appserviceslider.getMoviesNowPlaying();
