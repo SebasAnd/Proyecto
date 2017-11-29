@@ -4,8 +4,8 @@ import { LastMovieService } from '../LastMoviesService/LastMoviesService';
 
 @Component({
   selector: 'app-root',
-  templateUrl: '../app.component.html',
-  styleUrls: ['../app.component.css']
+  templateUrl: './PopularMovies.html',
+  styleUrls: ['./PopularMovies.css']
 })
 export class PopularMovies {
   title = 'app';
@@ -15,11 +15,11 @@ export class PopularMovies {
 
 
   private Slidertop:Promise<any>;
-  private resultSlidertop:JSON;
+  private resultSlidertop: JSON;
   private errSlidertop: any;
 
 
-  constructor (private appservice: LastMovieService,private appserviceslider : LastMovieService){
+  constructor (private appservice: LastMovieService,private appserviceslider: LastMovieService){
 
     this.Popular = appservice.getPopularMovies();
     this.Popular.then(
@@ -32,9 +32,9 @@ export class PopularMovies {
     this.Slidertop = appserviceslider.getMoviesNowPlaying();
 
     this.Slidertop.then(
-        (val:any) => {this.resultSlidertop = val ;}).catch(
+        (val: any) => {this.resultSlidertop = val ; }).catch(
 
-        (err :any) => {this.errSlidertop = err;}
+        (err: any) => {this.errSlidertop = err ; }
         );
 
 

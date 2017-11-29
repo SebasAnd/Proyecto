@@ -3,31 +3,29 @@ import { FormsModule } from '@angular/forms'
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { LastMovieService } from './LastMoviesService/LastMoviesService';
+import { PopularMoviesService } from './PopularMovies/PopularMoviesService';
+import { AppComponent } from './app.component';
+import { PopularMovies } from './PopularMovies/PopularMovies';
+import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 
 
-import { AppComponent } from './app.component';
-import { PopularMovies } from './PopularMovies/PopularMovies'
-
-const routes: Routes = [
-  {path: '', redirectTo: 'InCines', pathMatch: 'full'},
-  {path: 'InCines', component: AppComponent},
-  {path: 'Popular', component: PopularMovies}
-];
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PopularMovies
-  ],
+  ]  ,
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    AppRoutingModule,
+    RouterModule
+
   ],
-  providers: [ LastMovieService ],
+  providers: [ LastMovieService,PopularMoviesService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
