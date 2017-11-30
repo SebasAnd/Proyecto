@@ -9,6 +9,7 @@ import { PopularMovies } from './PopularMovies/PopularMovies';
 import { LastMovies } from './LastMovies/LastMovies';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
+import { MoviesDetailComponent } from './movies-detail/movies-detail.component';
 
 
 
@@ -17,7 +18,8 @@ import { RouterModule, Routes } from '@angular/router';
   declarations: [
     AppComponent,
     LastMovies,
-    PopularMovies
+    PopularMovies,
+    MoviesDetailComponent
   ]  ,
   imports: [
     BrowserModule,
