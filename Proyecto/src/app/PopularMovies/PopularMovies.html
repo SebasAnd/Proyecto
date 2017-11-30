@@ -1,11 +1,5 @@
-
-
-
-
-
-
 <body>
-
+<div *ngIf = "movies || resultSlidertop">
 <div class="container">
   <h2>En Cartelera</h2>
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -115,8 +109,8 @@
 </div>
 
 
+  <router-outlet></router-outlet>
 
-
-
+</div>
 
 </body>

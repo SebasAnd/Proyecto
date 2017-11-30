@@ -10,12 +10,12 @@ import { PopularMoviesService } from './PopularMoviesService';
 export class PopularMovies {
   title = 'app';
   private Popular: Promise<any>;
-  private movies: JSON;
+  private movies : JSON[];
   private error: any;
 
 
   private Slidertop: Promise<any>;
-  private resultSlidertop: JSON;
+  private resultSlidertop: JSON[];
   private errSlidertop: any;
 
 
