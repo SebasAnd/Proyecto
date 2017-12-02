@@ -10,8 +10,7 @@ import { LastMovies } from './LastMovies/LastMovies';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 import { MoviesDetailComponent } from './movies-detail/movies-detail.component';
-
-
+import { MoviesDetailService } from './movies-detail/movies-detailservice';
 
 
 @NgModule({
@@ -29,7 +28,7 @@ import { MoviesDetailComponent } from './movies-detail/movies-detail.component';
     RouterModule
 
   ],
-  providers: [ LastMovieService, PopularMoviesService ],
+  providers: [ LastMovieService, PopularMoviesService, MoviesDetailService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

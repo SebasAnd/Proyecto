@@ -4,11 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { PopularMovies } from './PopularMovies/PopularMovies';
 import { LastMovies } from './LastMovies/LastMovies';
+import { MoviesDetailComponent } from './movies-detail/movies-detail.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'InCines', pathMatch: 'full'},
   {path: 'InCines', component: LastMovies},
-  {path: 'Popular', component: PopularMovies}]
+  {path: 'Popular', component: PopularMovies},
+  {path: 'Details/:id', component: MoviesDetailComponent}]
 
 @NgModule({
   imports: [
