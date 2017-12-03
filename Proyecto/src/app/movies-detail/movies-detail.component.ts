@@ -58,18 +58,20 @@ export class MoviesDetailComponent implements OnInit {
     );
 
 
+    this.Slidertop = this.movieService.getMoviesNowPlaying();
 
+    this.Slidertop.then(
+      (val:any) => {this.resultSlidertop = val ;}).catch(
+
+      (err :any) => {this.errSlidertop = err;}
+    );
 
     console.log(id);
     /*this.movieService.getMovie(id)
       .subscribe(movie => {this.movie = movie; } );*/
   }
 
-detailsid(){
 
-
-
-}
 
 
 

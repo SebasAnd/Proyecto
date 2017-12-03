@@ -13,6 +13,7 @@ import { MoviesDetailComponent } from './movies-detail/movies-detail.component';
 import { MoviesDetailService } from './movies-detail/movies-detailservice';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

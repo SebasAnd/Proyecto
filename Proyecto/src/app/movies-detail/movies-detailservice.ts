@@ -8,6 +8,7 @@ import 'rxjs/add/operator/toPromise';
 
 
 
+
 @Injectable()
 
 export class MoviesDetailService {
