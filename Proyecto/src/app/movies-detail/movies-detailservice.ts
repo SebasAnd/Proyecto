@@ -92,6 +92,30 @@ export class MoviesDetailService {
 
   }
 
+  getMovieTrailer(id: number): Promise<any> {
+    let discover = 'movie/' + id + '/videos';
+
+    let params = new URLSearchParams();
+
+
+
+    params.set('api_key', this.apiKey);
+
+    params.set('r', 'json');
+
+
+
+    let url =  this.theMovieDbUrl + discover;
+
+    return this.http.get(url, {search: params})
+
+      .toPromise()
+
+      .then(movies => movies.json())
+
+      .catch(this.handleError);
+
+  }
 
   private handleError(error: any): Promise<any> {
 

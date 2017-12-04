@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { LastMovieService } from './LastMovies/LastMoviesService';
@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 import { MoviesDetailComponent } from './movies-detail/movies-detail.component';
 import { MoviesDetailService } from './movies-detail/movies-detailservice';
+import { LastActorsComponent } from './last-actors/last-actors.component';
 
 
 
@@ -19,14 +20,16 @@ import { MoviesDetailService } from './movies-detail/movies-detailservice';
     AppComponent,
     LastMovies,
     PopularMovies,
-    MoviesDetailComponent
+    MoviesDetailComponent,
+    LastActorsComponent
   ]  ,
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+
 
   ],
   providers: [ LastMovieService, PopularMoviesService, MoviesDetailService ],

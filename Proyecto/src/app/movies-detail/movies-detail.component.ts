@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { MoviesDetailService } from './movies-detailservice';
-
+import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 
 
 @Component({
@@ -17,10 +17,19 @@ export class MoviesDetailComponent implements OnInit {
   private detail: any[];
   private err: any;
 
+  private detailstrailer: Promise<any>;
+  private trailer: any[];
+  private errtrailer: any;
+  public trustedDashboardUrl : SafeUrl;
+  videoURL: string;
+
+
   private router: Router;
   private Slidertop: Promise<any>;
   private resultSlidertop: any[];
   private errSlidertop: any;
+
+
 
   /*constructor (){
 
@@ -41,8 +50,10 @@ export class MoviesDetailComponent implements OnInit {
   @Input() movie: any[];
 
   constructor(private movieService: MoviesDetailService,
-              private route: ActivatedRoute
-              ) { }
+              private route: ActivatedRoute,
+              private sanitizer: DomSanitizer,
+              ) {
+  }
 
   ngOnInit() {
     this.getMovie();
@@ -61,12 +72,21 @@ export class MoviesDetailComponent implements OnInit {
     this.Slidertop = this.movieService.getMoviesNowPlaying();
 
     this.Slidertop.then(
-      (val:any) => {this.resultSlidertop = val ;}).catch(
+      (val:any) => {this.resultSlidertop = val ; }).catch(
 
-      (err :any) => {this.errSlidertop = err;}
+      (err :any) => {this.errSlidertop = err; }
+    );
+    this.detailstrailer = this.movieService.getMovieTrailer(id);
+    this.detailstrailer.then(
+      (val: any) => {this.trailer = val ; this.videoURL = 'https://www.youtube.com/embed/' + val.results[0].key;
+        this.trustedDashboardUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.videoURL); }).catch(
+
+      (err: any) => {this.errtrailer = err; }
     );
 
-    console.log(id);
+
+
+    console.log();
     /*this.movieService.getMovie(id)
       .subscribe(movie => {this.movie = movie; } );*/
   }

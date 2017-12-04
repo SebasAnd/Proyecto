@@ -2,7 +2,7 @@
 <div>
 
 <div class="container">
-  <h2>En Cartelera</h2>
+  <h2>Last Movies</h2>
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -19,7 +19,7 @@
           <h3>{{resultSlidertop.results[0].title}}</h3>
           <p></p>
         </div>
-        <img src="https://image.tmdb.org/t/p/w780/{{resultSlidertop.results[0].backdrop_path}}" alt="{{resultSlidertop.results[0].title}}" style="width:100%; "routerLink='/Details/{{resultSlidertop.results[0].id}}'>
+        <img src="https://image.tmdb.org/t/p/w780/{{resultSlidertop.results[0].backdrop_path}}" onclick="javascript:window.location.reload()" alt="{{resultSlidertop.results[0].title}}" style="width:100%;" routerLink='/Details/{{resultSlidertop.results[0].id}}'>
       </div>
 
       <div class="item">
@@ -27,7 +27,7 @@
           <h3>{{resultSlidertop.results[1].title}}</h3>
           <p></p>
         </div>
-        <img src="https://image.tmdb.org/t/p/w780/{{resultSlidertop.results[1].backdrop_path}}" alt="{{resultSlidertop.results[1].title}}" style="width:100%;"routerLink='/Details/{{resultSlidertop.results[1].id}}'>
+        <img src="https://image.tmdb.org/t/p/w780/{{resultSlidertop.results[1].backdrop_path}}" onclick="javascript:window.location.reload()"alt="{{resultSlidertop.results[1].title}}" style="width:100%;" routerLink='/Details/{{resultSlidertop.results[1].id}}'>
       </div>
 
       <div class="item">
@@ -35,14 +35,14 @@
           <h3>{{resultSlidertop.results[2].title}}</h3>
           <p></p>
         </div>
-        <img src="https://image.tmdb.org/t/p/w780/{{resultSlidertop.results[2].backdrop_path}}" alt="{{resultSlidertop.results[2].title}}" style="width:100%;"routerLink='/Details/{{resultSlidertop.results[2].id}}'>
+        <img src="https://image.tmdb.org/t/p/w780/{{resultSlidertop.results[2].backdrop_path}}" onclick="javascript:window.location.reload()" alt="{{resultSlidertop.results[2].title}}" style="width:100%;" routerLink='/Details/{{resultSlidertop.results[2].id}}'>
       </div>
       <div class="item">
         <div class="carousel-caption d-none d-md-block">
           <h3>{{resultSlidertop.results[3].title}}</h3>
           <p></p>
         </div>
-        <img src="https://image.tmdb.org/t/p/w780/{{resultSlidertop.results[3].backdrop_path}}" alt="{{resultSlidertop.results[3].title}}" style="width:100%;" routerLink='/Details/{{resultSlidertop.results[3].id}}'>
+        <img src="https://image.tmdb.org/t/p/w780/{{resultSlidertop.results[3].backdrop_path}}" onclick="javascript:window.location.reload()" alt="{{resultSlidertop.results[3].title}}" style="width:100%;" routerLink='/Details/{{resultSlidertop.results[3].id}}'>
       </div>
     </div>
 
@@ -97,32 +97,47 @@
 
 
 
-        <div class="w3-container w3-gray">
+        <div class="w3-container w3-black">
           <h1>{{ detail.title}}</h1>
         </div>
         <div class="w3-container w3-black">
         <!-- Control the column width, and how they should appear on different devices -->
         <div class="row">
           <div class="col-sm-3" ><img class="card-img-top" src="https://image.tmdb.org/t/p/w780/{{detail.poster_path}}" alt="Card image cap" style="width: 90%;height:90;" >
+
             </div>
-          <div class="col-sm-7" ><h3>{{ detail.overview}}</h3>
+          <div class="col-sm-7" ><h5>{{ detail.overview}}</h5>
+
           </div>
+          <div class="col-sm-5" >
+
+            <div class="w3-container w3-black">
+              <h3>{{ trailer.results[0].name }}  </h3>
+              <iframe  width="865" height="500"  [src]='trustedDashboardUrl' frameborder="0" allowfullscreen></iframe>
+
+            </div>
+
+          </div>
+
         </div>
 
 
 
         </div>
-    <div class="w3-container w3-teal">
-      <h5> </h5>
 
-    </div>
 
 
       <div>
 
 
+
       </div>
-    </div>
+
+
+
+
+  </div>
+
 
 
 
@@ -134,7 +149,10 @@
 
 
 
+
+
 <router-outlet></router-outlet>
 </div>
 
 </body>
+
