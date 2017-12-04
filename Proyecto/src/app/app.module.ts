@@ -11,7 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 import { MoviesDetailComponent } from './movies-detail/movies-detail.component';
 import { MoviesDetailService } from './movies-detail/movies-detailservice';
-import { LastActorsComponent } from './last-actors/last-actors.component';
+import{ LastActorsComponent } from './last-actors-component/last-actors-component.component'
 
 
 
