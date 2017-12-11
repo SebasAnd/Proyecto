@@ -1,9 +1,9 @@
 body {
 
+  background-color : black;
 
-  background-repeat : no-repeat;
-  background-attachment : fixed;
-  background-size: 1750px 850px}
+}
+
 
 card{ background-color: grey }
 

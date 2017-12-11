@@ -2,9 +2,7 @@ import { Component } from '@angular/core';
 
 import { LastMovieService } from './LastMovies/LastMoviesService';
 
-import { MoviesDetailService } from './movies-detail/movies-detailservice';
-import { Router } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
@@ -22,35 +20,23 @@ export class AppComponent {
   private detail: any[];
   private err: any;
   ngOnInit() {
-    this.getMovie();
-  }
-  constructor (private appserviceslider : LastMovieService,private movieService ){
 
+  }
+  constructor (private appserviceslider : LastMovieService ) {
 
 
     this.Slidertop = appserviceslider.getMoviesNowPlaying();
 
     this.Slidertop.then(
-      (val:any) => {this.resultSlidertop = val ;}).catch(
-
-      (err :any) => {this.errSlidertop = err;}
-
-
+      (val: any) => {
+        this.resultSlidertop = val;
+      }).catch(
+      (err: any) => {
+        this.errSlidertop = err;
+      }
     );
 
 
-
-}
-
-getMovie(): void {
-  const id = +this.route.snapshot.paramMap.get('id');
-  this.details = this.movieService.getMoviedetail(id);
-  this.details.then(
-    (val: any) => {this.detail = val ; }).catch(
-
-    (err: any) => {this.err = err; }
-  );
-
-
+  }
 
 }
