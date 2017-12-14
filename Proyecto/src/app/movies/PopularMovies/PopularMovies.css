@@ -1,0 +1,13 @@
+body {background-color: black;}
+
+card{ background-color: grey }
+
+.colored {
+
+  color: #ffffff;
+
+}
+.card-body{
+
+  background-color: darkgray;
+}

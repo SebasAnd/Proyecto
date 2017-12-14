@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 
 import { Http, URLSearchParams } from '@angular/http';
 
+import { Observable } from "rxjs/Observable";
 
 
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
 
 
 
@@ -18,28 +20,24 @@ export class LastMovieService {
 
 
 
+
+
   constructor(private http: Http) { }
 
-  getMoviesNowPlaying() : Promise<any> {
-    let discover = 'movie/now_playing';
+  getMoviesNowPlaying(page? : number) : Observable<any> {
+    let discover =this.theMovieDbUrl+ 'movie/now_playing'+'?api_key=8230c7ea8cb40f6fd40f8851a920b7bf';
 
-    let params = new URLSearchParams();
+    if(page)
+    {
+     discover +=  "&page="+page;
+    } else  {
 
+    }
+    console.log(discover);
+      return this.http
+        .get(discover)
+        .map( response => response.json());
 
-    params.set('api_key', this.apiKey);
-
-    params.set('r', 'json');
-
-
-    let url = this.theMovieDbUrl + discover;
-
-    return this.http.get(url, {search: params})
-
-      .toPromise()
-
-      .then(movies => movies.json())
-
-      .catch(this.handleError);
 
   }
 
@@ -52,5 +50,9 @@ export class LastMovieService {
     return Promise.reject(error.message || error);
 
   }
+
+
+
+
 
 }

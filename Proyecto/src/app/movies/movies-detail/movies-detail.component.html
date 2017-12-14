@@ -1,10 +1,10 @@
 <body>
-<div *ngIf=" detail && trailer">
+<div *ngIf="detail || trailer">
 
 <div class="container">
 
         <div class="w3-container w3-black">
-          <h1>{{ detail.title}}</h1>
+          <h1>{{detail.original_title}}</h1>
         </div>
         <div class="w3-container w3-black">
         <!-- Control the column width, and how they should appear on different devices -->
@@ -17,9 +17,8 @@
 
           </div>
           <div class="col-sm-5" >
-
-            <div class="w3-container w3-black" >
-              <h3>{{ trailer.results[0].name }}  </h3>
+            {{ trailer.name}}
+            <div class="w3-container w3-black">
               <iframe  width="865" height="500"  [src]='trustedDashboardUrl' frameborder="0" allowfullscreen></iframe>
 
             </div>

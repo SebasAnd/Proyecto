@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { LastMovieService } from './LastMovies/LastMoviesService';
+import { LastMovieService } from './movies/LastMovies/LastMoviesService';
 
 
 
@@ -21,22 +21,26 @@ export class AppComponent {
   private err: any;
   ngOnInit() {
 
+
+    this.getSlideMovies()
+
+
   }
   constructor (private appserviceslider : LastMovieService ) {
 
 
-    this.Slidertop = appserviceslider.getMoviesNowPlaying();
 
-    this.Slidertop.then(
-      (val: any) => {
-        this.resultSlidertop = val;
-      }).catch(
-      (err: any) => {
-        this.errSlidertop = err;
-      }
-    );
 
 
   }
+
+  getSlideMovies(){
+
+
+    this.appserviceslider.getMoviesNowPlaying()
+      .subscribe(resultSlidertop => {this.resultSlidertop = resultSlidertop['results'] })
+  }
+
+
 
 }
