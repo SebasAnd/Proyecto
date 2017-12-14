@@ -1,54 +1,1 @@
-<body>
-<div>
-
-  <div class="container">
-
-    <div>
-      <div class="row  row-xs-6 row-sm-3 row-lg-20">
-        <div class="col-xs-3 col-sm-3 col-lg-3"  *ngFor="let mov of movies">
-          <div class="card" style="width: 100%;">
-            <img class="card-img-top " src="https://image.tmdb.org/t/p/w780/{{mov.poster_path}}" alt="Card image cap" routerLink='/Details/{{mov.id}}' >
-            <div class="card-body"  >
-              <h6 class="card-title" ><small class="colored">{{mov.original_title}} </small></h6>
-              <p class="card-text"></p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-
-
-
-  </div>
-
-<div class="container" style="background-color: grey">
-  <td-paging-bar #pagingBar
-                 [pageSize]="100"
-                 [total]="1345"
-                 (change)="changeInput($event)">
-    <p hide-xs>Go to:</p>
-    <mat-form-field>
-      <input #goToInput
-             matInput
-             type="number"
-             [min]="1"
-             [max]="pagingBar.maxPage"
-             [value]="pagingBar.page"
-             (blur)="goToInput.value = pagingBar.page"
-             (keyup.enter)="pagingBar.navigateToPage(goToInput.value); goToInput.value = pagingBar.page"/>
-
-    </mat-form-field>
-    {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
-
-  </td-paging-bar>
-</div>
-
-  <router-outlet></router-outlet>
-
-</div>
-
-</body>
+<body><div>  <div class="container" *ngIf="movies">    <div>      <div class="row  row-xs-6 row-sm-3 row-lg-20">        <div class="col-xs-3 col-sm-3 col-lg-3"  *ngFor="let mov of movies.results">          <div class="card" style="width: 100%;" >            <div *ngIf="mov.poster_path; then imageTrue else imageFalse"></div>            <ng-template #imageTrue>              <img class="card-img-top " src="https://image.tmdb.org/t/p/w780/{{mov.poster_path}}" alt="Card image cap" routerLink='/Details/{{mov.id}}' >            </ng-template>            <ng-template #imageFalse>              <img class="card-img-top " src="/assets/NoImage.png" alt="Card image cap" routerLink='/Details/{{mov.id}}' >            </ng-template>            <div class="card-body"  >              <h6 class="card-title" ><small class="colored">{{mov.original_title}} </small></h6>              <p class="card-text"></p>              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>            </div>          </div>        </div>      </div>    <div style="background-color: darkgrey">      <td-paging-bar #pagingBar                     [pageSize]="20"                     [total]=movies.total_results                     (change)="changeInput($event)">        <p hide-xs>Go to:</p>        <mat-form-field>          <input #goToInput                 matInput                 type="number"                 [min]="1"                 [max]="pagingBar.maxPage"                 [value]="pagingBar.page"                 (blur)="goToInput.value = pagingBar.page"                 (keyup.enter)="pagingBar.navigateToPage(goToInput.value); goToInput.value = pagingBar.page"/>        </mat-form-field>        {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>      </td-paging-bar>    </div>    </div>  </div></div></body>

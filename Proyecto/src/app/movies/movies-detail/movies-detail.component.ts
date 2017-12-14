@@ -30,6 +30,10 @@ export class MoviesDetailComponent implements OnInit {
   private resultSlidertop: any[];
   private errSlidertop: any;
 
+
+
+  constant : string;
+
   @Input() movie: any[];
 
   constructor(private movieService: MoviesDetailService,
@@ -44,22 +48,25 @@ export class MoviesDetailComponent implements OnInit {
   }
 
   getMovie(): void {
+    this.constant = "https://image.tmdb.org/t/p/w780/";
     const id = +this.route.snapshot.paramMap.get('id');
     this.movieService.getMoviedetail(id)
       .subscribe(movie => {this.detail = movie;
-        console.log(this.detail);
+
         this.trailer = movie.videos['results'][0];
-        this.videoURL = 'https://www.youtube.com/embed/' + this.trailer.key;
-    this.trustedDashboardUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.videoURL)}
+        if(this.trailer){
+
+          this.videoURL = 'https://www.youtube.com/embed/' + this.trailer.key;
+          this.trustedDashboardUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.videoURL)
+        }
+        else{
+
+
+        }
+        }
       );
 
 
-
-
-
-    console.log();
-    /*this.movieService.getMovie(id)
-      .subscribe(movie => {this.movie = movie; } );*/
   }
 
   getTrailers(){
@@ -69,6 +76,12 @@ export class MoviesDetailComponent implements OnInit {
         this.trailer = movie['results'][0];;
         this.videoURL = 'https://www.youtube.com/embed/' + this.trailer.key;
       });
+  }
+
+
+  test(numb: number):string{
+   return  this.constant + numb;
+
   }
 
 }

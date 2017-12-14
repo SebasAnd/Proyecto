@@ -26,7 +26,6 @@ export class MoviesDetailService {
     let discover = this.theMovieDbUrl+ 'movie/'+id+'?api_key=8230c7ea8cb40f6fd40f8851a920b7bf&append_to_response=videos';
 
 
-    console.log(discover);
     return this.http
       .get(discover)
       .map( response => response.json());

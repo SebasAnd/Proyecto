@@ -30,7 +30,7 @@ export class PopularMoviesService {
 
 
     }
-    console.log(discover);
+
     return this.http
       .get(discover)
       .map( response => response.json());

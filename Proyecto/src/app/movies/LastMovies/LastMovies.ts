@@ -46,23 +46,17 @@ export class LastMovies implements OnInit{
 
   getPlayingMovies(){
 
-    if (this.control_page == undefined){
+
 
       this.appservice.getMoviesNowPlaying()
         .subscribe(movie => {
-          this.movies = movie['results'];
-          console.log(this.movies);
-        });
-    }
-    else{
+          this.movies = movie;
 
-      console.log(this.control_page.page);
-      this.appservice.getMoviesNowPlaying(this.control_page.page)
-        .subscribe(movie => {
-          this.movies = movie['results'];
-          console.log(this.movies);
         });
-    }
+
+
+
+
 
 }
 
@@ -76,7 +70,18 @@ getSlideMovies(){
 
   changeInput(event: IPageChangeEvent): void {
     this.control_page = event;
+
+    this.changePage();
   }
 
 
+  changePage(){
+
+
+    this.appservice.getMoviesNowPlaying(this.control_page.page)
+      .subscribe(movie => {
+        this.movies = movie;
+      });
+
+  }
 }

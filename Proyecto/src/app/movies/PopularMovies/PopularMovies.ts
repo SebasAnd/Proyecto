@@ -2,6 +2,7 @@ import { Component , OnInit} from '@angular/core';
 
 import { PopularMoviesService } from './PopularMoviesService';
 import {Observable} from "rxjs/Observable";
+import {IPageChangeEvent} from "@covalent/core";
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,7 @@ import {Observable} from "rxjs/Observable";
 })
 export class PopularMovies implements OnInit{
   title = 'app';
+  control_page: IPageChangeEvent;
   private Popular: Observable<any>;
   private movies : JSON[];
   private error: any;
@@ -30,8 +32,27 @@ export class PopularMovies implements OnInit{
 
     this.appservice.getPopularMovies()
       .subscribe(movie => {
-        this.movies = movie['results'];
-        console.log(this.movies);
+        this.movies = movie;
+
       });
   }
+
+
+  changeInput(event: IPageChangeEvent): void {
+    this.control_page = event;
+
+    this.changePage();
+  }
+
+
+  changePage(){
+
+
+    this.appservice.getPopularMovies(this.control_page.page)
+      .subscribe(movie => {
+        this.movies = movie;
+      });
+
+  }
 }
+
