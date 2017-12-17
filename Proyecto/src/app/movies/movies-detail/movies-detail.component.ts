@@ -45,8 +45,32 @@ export class MoviesDetailComponent implements OnInit {
 
     //this.getTrailers();
     this.getMovie();
+    this.redirect();
   }
+  redirect(){
+    this.route.params.subscribe((params)=> {
+      console.log('updatedParams', params);
+      this.movieService.getMoviedetail(params.id).subscribe(
+        {
+          next: movie => { this.detail = movie;
+            this.trailer = movie.videos['results'][0];
+            if(this.trailer){
 
+              this.videoURL = 'https://www.youtube.com/embed/' + this.trailer.key;
+              this.trustedDashboardUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.videoURL)
+            }
+            else{
+
+
+            }
+
+          },
+
+        }
+      );
+
+    });
+  }
   getMovie(): void {
     this.constant = "https://image.tmdb.org/t/p/w780/";
     const id = +this.route.snapshot.paramMap.get('id');
