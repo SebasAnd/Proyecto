@@ -66,17 +66,20 @@
 
     <div class="collapse navbar-collapse" id="navbarColor02">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
+        <li class="nav-item ">
+          <a routerLink='/InCines' class="nav-link" >Last Movies</a>
+
+
+        </li>
+        <li class="nav-item ">
           <a routerLink='/Popular' class="nav-link" >Popular</a>
 
 
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
+          <a class="nav-link" routerLink='/TvShows'>Tv Shows</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
+
         <li class="nav-item">
           <a routerLink='/Actors' class="nav-link">Actors</a>
         </li>
@@ -89,6 +92,7 @@
     </div>
 
   </nav>
+
 </div>
 
      <router-outlet></router-outlet>

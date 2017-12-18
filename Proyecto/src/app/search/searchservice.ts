@@ -58,6 +58,30 @@ export class SearchService {
 
 
     }
+    if (page) {
+      discover += "&page=" + page;
+    } else {
+
+    }
+
+    return this.http
+      .get(discover)
+      .map(response => response.json());
+
+
+  }
+
+  getSearchTvshows(thing?: string,page?: number): Observable<any> {
+    let discover = this.theMovieDbUrl + 'search/tv' + '?api_key=8230c7ea8cb40f6fd40f8851a920b7bf';
+
+    if(thing){
+
+      discover += "&query=" + thing;
+
+    }else{
+
+
+    }
     console.log(discover);
     if (page) {
       discover += "&page=" + page;
@@ -86,7 +110,6 @@ export class SearchService {
 
     }
 
-    console.log(discover);
     if (page) {
       discover += "&page=" + page;
     } else {

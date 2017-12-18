@@ -6,6 +6,7 @@
       <li class="active"><a routerLinkActive="/Search/{{searchText}}" >All</a></li>
       <li><a routerLink="/Movies/{{searchText}}">Movies</a></li>
       <li><a [routerLink]="['/Actors/', searchText]">Actors</a></li>
+      <li><a [routerLink]="['/Tvshows/', searchText]">Tv shows</a></li>
     </ul>
     <div>
       <div class="row  row-xs-6 row-sm-3 row-lg-20">
@@ -21,11 +22,11 @@
               <img class="card-img-top " src="/assets/NoImage.png" alt="Card image cap" routerLink='/Details/{{mov.id}}' >
             </ng-template>
 
-            <div class="card-body"  >
-              <h6 class="card-title" ><small class="colored">{{mov.original_title}} </small></h6>
-              <p class="card-text"></p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
+               <div class="card-body"  >
+                 <h6 class="card-title" ><small class="colored">{{mov.original_title}} </small></h6>
+                 <p class="card-text"></p>
+                 <p class="card-text"><small class="colored">{{mov.release_date}}</small></p>
+               </div>
 
              </ng-template>
             <div *ngIf="mov.media_type == 'person';then showactor "></div>
@@ -47,6 +48,23 @@
 
               </div>
             </div>
+            </ng-template>
+            <div *ngIf="mov.media_type == 'tv';then showtv "></div>
+            <ng-template #showtv>
+              <div *ngIf="mov.poster_path; then imageTrue else imageFalse"></div>
+              <ng-template #imageTrue>
+                <img class="card-img-top " src="https://image.tmdb.org/t/p/w780/{{mov.poster_path}}" alt="Card image cap" routerLink='/Tvshows-detail/{{mov.id}}' >
+              </ng-template>
+              <ng-template #imageFalse>
+                <img class="card-img-top " src="/assets/NoImage.png" alt="Card image cap" routerLink='/Tvshows-detail/{{mov.id}}' >
+              </ng-template>
+
+              <div class="card-body"  >
+                <h6 class="card-title" ><small class="colored">{{mov.original_name}} </small></h6>
+                <p class="card-text"></p>
+                <p class="card-text"><small class="colored">{{mov.first_air_date}}</small></p>
+              </div>
+
             </ng-template>
 
           </div>

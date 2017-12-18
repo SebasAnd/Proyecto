@@ -6,6 +6,7 @@
       <li ><a [routerLink]="['/Search/', searchText]">All</a></li>
       <li class="active"><a [routerLink]="['/Movies/', searchText]">Movies</a></li>
       <li><a [routerLink]="['/Actors/', searchText]">Actors</a></li>
+      <li><a [routerLink]="['/Tvshows/', searchText]">Tvshows</a></li>
     </ul>
     <div>
       <div class="row  row-xs-6 row-sm-3 row-lg-20">
@@ -22,7 +23,7 @@
             <div class="card-body"  >
               <h6 class="card-title" ><small class="colored">{{mov.original_title}} </small></h6>
               <p class="card-text"></p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              <p class="card-text"><small class="colored">{{mov.release_date}}</small></p>
             </div>
 
 
