@@ -1,0 +1,76 @@
+<body>
+<div>
+
+  <div class="container" *ngIf="actors">
+    <ul class="nav nav-tabs">
+      <li><a [routerLink]="['/Search/', searchText]">All</a></li>
+      <li><a [routerLink]="['/Movies/', searchText]">Movies</a></li>
+      <li class="active"><a  [routerLink]="['/Actors/', searchText]">Actors</a></li>
+      <li><a [routerLink]="['/Tvshows/', searchText]">Tvshows</a></li>
+    </ul>
+    <div>
+      <div class="row  row-xs-6 row-sm-3 row-lg-20">
+        <div class="col-xs-3 col-sm-3 col-lg-3"  *ngFor="let mov of actors.results">
+          <div class="card" style="width: 100%;" >
+            <div *ngIf="mov.profile_path; then imageTrue else imageFalse"></div>
+            <ng-template #imageTrue>
+              <img class="card-img-top " src="https://image.tmdb.org/t/p/w780/{{mov.profile_path}}" alt="Card image cap" routerLink='/Actors-detail/{{mov.id}}' >
+            </ng-template>
+            <ng-template #imageFalse>
+              <img class="card-img-top " src="/assets/NoImage.png" alt="Card image cap" routerLink='/Actors-detail/{{mov.id}}' >
+            </ng-template>
+
+            <div class="card-body"  >
+              <h6 class="card-title" ><small class="colored">{{mov.name}} </small></h6>
+
+            </div>
+
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+    <div style="background-color: darkgrey">
+      <td-paging-bar #pagingBar
+                     [pageSize]="20"
+                     [total]=actors.total_results
+                     (change)="changeInput($event)">
+        <p hide-xs>Go to:</p>
+        <mat-form-field>
+          <input #goToInput
+                 matInput
+                 type="number"
+                 [min]="1"
+                 [max]="pagingBar.maxPage"
+                 [value]="pagingBar.page"
+                 (blur)="goToInput.value = pagingBar.page"
+                 (keyup.enter)="pagingBar.navigateToPage(goToInput.value); goToInput.value = pagingBar.page"/>
+
+        </mat-form-field>
+        {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
+
+      </td-paging-bar>
+
+
+
+    </div>
+
+
+  </div>
+
+
+
+
+</div>
+
+</body>

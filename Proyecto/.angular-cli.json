@@ -19,7 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.scss"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
@@ -55,8 +55,9 @@
   },
   "styles": [
     "../node_modules/bootstrap/dist/css/bootstrap.min.css",
-    "styles.css"
+    "styles.scss"
   ],
+
   "defaults": {
     "styleExt": "css",
     "component": {}

@@ -1,0 +1,113 @@
+<body>
+<div>
+
+  <div class="container" *ngIf="movies">
+    <ul class="nav nav-tabs">
+      <li class="active"><a routerLinkActive="/Search/{{searchText}}" >All</a></li>
+      <li><a routerLink="/Movies/{{searchText}}">Movies</a></li>
+      <li><a [routerLink]="['/Actors/', searchText]">Actors</a></li>
+      <li><a [routerLink]="['/Tvshows/', searchText]">Tv shows</a></li>
+    </ul>
+    <div>
+      <div class="row  row-xs-6 row-sm-3 row-lg-20">
+        <div class="col-xs-3 col-sm-3 col-lg-3"  *ngFor="let mov of movies.results">
+          <div class="card" style="width: 100%;" >
+            <div *ngIf="mov.media_type == 'movie';then showmovie "></div>
+             <ng-template #showmovie>
+            <div *ngIf="mov.poster_path; then imageTrue else imageFalse"></div>
+            <ng-template #imageTrue>
+              <img class="card-img-top " src="https://image.tmdb.org/t/p/w780/{{mov.poster_path}}" alt="Card image cap" routerLink='/Details/{{mov.id}}' >
+            </ng-template>
+            <ng-template #imageFalse>
+              <img class="card-img-top " src="/assets/NoImage.png" alt="Card image cap" routerLink='/Details/{{mov.id}}' >
+            </ng-template>
+
+               <div class="card-body"  >
+                 <h6 class="card-title" ><small class="colored">{{mov.original_title}} </small></h6>
+                 <p class="card-text"></p>
+                 <p class="card-text"><small class="colored">{{mov.release_date}}</small></p>
+               </div>
+
+             </ng-template>
+            <div *ngIf="mov.media_type == 'person';then showactor "></div>
+            <ng-template #showactor>
+
+            <div class="card" style="width: 100%;" >
+              <div *ngIf="mov.profile_path; then imageTrue else imageFalse"></div>
+              <ng-template #imageTrue>
+                <img class="card-img-top " src="https://image.tmdb.org/t/p/w780/{{mov.profile_path}}" alt="Card image cap" routerLink='/Actors-detail/{{mov.id}}' >
+              </ng-template>
+              <ng-template #imageFalse>
+                <img class="card-img-top " src="/assets/NoImage.png" alt="Card image cap" routerLink='/Actors-detail/{{mov.id}}'  >
+
+              </ng-template>
+
+              <div class="card-body"  >
+                <h6 class="card-title" ><small class="colored">{{mov.name}} </small></h6>
+                <p class="card-text"></p>
+
+              </div>
+            </div>
+            </ng-template>
+            <div *ngIf="mov.media_type == 'tv';then showtv "></div>
+            <ng-template #showtv>
+              <div *ngIf="mov.poster_path; then imageTrue else imageFalse"></div>
+              <ng-template #imageTrue>
+                <img class="card-img-top " src="https://image.tmdb.org/t/p/w780/{{mov.poster_path}}" alt="Card image cap" routerLink='/Tvshows-detail/{{mov.id}}' >
+              </ng-template>
+              <ng-template #imageFalse>
+                <img class="card-img-top " src="/assets/NoImage.png" alt="Card image cap" routerLink='/Tvshows-detail/{{mov.id}}' >
+              </ng-template>
+
+              <div class="card-body"  >
+                <h6 class="card-title" ><small class="colored">{{mov.original_name}} </small></h6>
+                <p class="card-text"></p>
+                <p class="card-text"><small class="colored">{{mov.first_air_date}}</small></p>
+              </div>
+
+            </ng-template>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+      <div style="background-color: darkgrey">
+        <td-paging-bar #pagingBar
+                       [pageSize]="20"
+                       [total]=movies.total_results
+                       (change)="changeInput($event)">
+          <p hide-xs>Go to:</p>
+          <mat-form-field>
+            <input #goToInput
+                   matInput
+                   type="number"
+                   [min]="1"
+                   [max]="pagingBar.maxPage"
+                   [value]="pagingBar.page"
+                   (blur)="goToInput.value = pagingBar.page"
+                   (keyup.enter)="pagingBar.navigateToPage(goToInput.value); goToInput.value = pagingBar.page"/>
+
+          </mat-form-field>
+          {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
+
+        </td-paging-bar>
+
+
+
+      </div>
+
+
+  </div>
+
+
+
+
+</div>
+
+</body>

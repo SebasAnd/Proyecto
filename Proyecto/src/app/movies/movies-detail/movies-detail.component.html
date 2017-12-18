@@ -1,0 +1,56 @@
+<body>
+<div *ngIf="detail">
+
+<div class="container" >
+<div class="imagefondo">
+        <div class="w3-container w3-black">
+          <h1>{{detail.original_title}}</h1>
+        </div>
+        <div class="w3-container w3-black">
+        <!-- Control the column width, and how they should appear on different devices -->
+        <div class="row">
+          <div class="col-sm-3" >
+            <div *ngIf="detail.poster_path; then imageTrue else imageFalse"></div>
+            <ng-template #imageTrue>
+              <img class="card-img-top " [src]="test(detail.poster_path)" alt="Card image cap"  >
+            </ng-template>
+            <ng-template #imageFalse>
+              <img class="card-img-top " src="/assets/NoImage.png" alt="Card image cap"  >
+            </ng-template>
+
+            </div>
+          <div class="col-sm-7">
+            <h5>{{ detail.overview }}</h5>
+
+          </div>
+          <div class="col-sm-5"  *ngIf="trailer">
+            {{ trailer.name}}
+            <div class="w3-container w3-black">
+              <iframe  width="865" height="500"  [src]='trustedDashboardUrl' frameborder="0" allowfullscreen></iframe>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        </div>
+
+
+
+      <div>
+
+
+
+      </div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</body>

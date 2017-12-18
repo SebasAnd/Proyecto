@@ -1,0 +1,71 @@
+<body>
+<div *ngIf="detail">
+
+  <div class="container" >
+    <div class="imagefondo">
+      <div class="w3-container w3-black">
+        <h1>{{detail.name}}</h1>
+      </div>
+      <div class="w3-container w3-black">
+        <!-- Control the column width, and how they should appear on different devices -->
+        <div class="row">
+          <div class="col-sm-3" >
+            <div *ngIf="detail.profile_path; then imageTrue else imageFalse"></div>
+            <ng-template #imageTrue>
+              <img class="card-img-top " [src]="test(detail.profile_path)" alt="Card image cap"  >
+            </ng-template>
+            <ng-template #imageFalse>
+              <img class="card-img-top " src="/assets/NoImage.png" alt="Card image cap"  >
+            </ng-template>
+
+          </div>
+          <div class="col-sm-7">
+
+            <h5>{{ detail.biography }}</h5>
+
+
+
+          </div>
+          <div class="row  row-xs-6 row-sm-3 row-lg-20" *ngIf="known">
+            <div class="col-xs-3 col-sm-3 col-lg-3"  *ngFor="let mov of known.cast">
+              <div class="card" style="width: 100%;" >
+                <div *ngIf="mov.poster_path; then imageTrue else imageFalse"></div>
+                <ng-template #imageTrue>
+                  <img class="card-img-top " src="https://image.tmdb.org/t/p/w780/{{mov.poster_path}}" alt="Card image cap" routerLink='/Details/{{mov.id}}' >
+                </ng-template>
+                <ng-template #imageFalse>
+                  <img class="card-img-top " src="/assets/NoImage.png" alt="Card image cap" routerLink='/Details/{{mov.id}}' >
+                </ng-template>
+
+                <div class="card-body"  >
+                  <h6 class="card-title" ><small class="colored">{{mov.original_title}} </small></h6>
+                  <p class="card-text"></p>
+                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+      </div>
+
+
+
+      <div>
+
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+</div>
+
+</body>
