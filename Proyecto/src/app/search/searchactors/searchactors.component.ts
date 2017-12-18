@@ -1,7 +1,7 @@
 import { Component, OnInit, Input , OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import {SearchService} from "./searchservice";
+import {SearchService} from "../searchservice";
 import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 import {Observable} from "rxjs/Observable";
 import 'rxjs/add/observable/fromEvent';
@@ -15,15 +15,15 @@ import {IPageChangeEvent} from "@covalent/core";
 
 
 @Component({
-  selector: 'app-movies-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  selector: 'app-movies-searchactors',
+  templateUrl: './searchactors.component.html',
+  styleUrls: ['./searchactors.component.css']
 })
-export class SearchComponent implements OnInit {
+export class SearchactorsComponent implements OnInit {
 
   private details: Observable<any>;
   private detail: any[];
-  private movies: any;
+  private actors: any;
   control_page: IPageChangeEvent;
   private  searchText : string;
   private busy : any;
@@ -68,11 +68,10 @@ export class SearchComponent implements OnInit {
   redirect(){
     this.route.params.subscribe((params)=>{
 
-      this.appsearch.getSearchProduct(params.word).subscribe(
+      this.appsearch.getSearchperson(params.word).subscribe(
         {
-          next: results => { this.movies = results
-          this.searchText = params.word},
-          error: err => { this.movies = [] },
+          next: results => { this.actors = results },
+          error: err => { this.actors = [] },
           complete: () => {}
         }
       );
@@ -81,11 +80,11 @@ export class SearchComponent implements OnInit {
   }
 
   doSearch() {
-     this.searchText = "" + this.route.snapshot.paramMap.get('word');
-         this.appsearch.getSearchProduct(this.searchText).subscribe(
+    this.searchText = "" + this.route.snapshot.paramMap.get('word');
+    this.appsearch.getSearchperson(this.searchText).subscribe(
       {
-        next: results => { this.movies = results },
-        error: err => { this.movies = [] },
+        next: results => { this.actors = results },
+        error: err => { this.actors = [] },
         complete: () => {}
       }
     );
@@ -111,10 +110,10 @@ export class SearchComponent implements OnInit {
 
     this.route.params.subscribe((params)=> {
       console.log('updatedParams', params);
-      this.appsearch.getSearchProduct(params.word,this.control_page.page).subscribe(
+      this.appsearch.getSearchperson(params.word,this.control_page.page).subscribe(
         {
-          next: results => { this.movies = results },
-          error: err => { this.movies = [] },
+          next: results => { this.actors = results },
+          error: err => { this.actors = [] },
           complete: () => {}
         }
       );

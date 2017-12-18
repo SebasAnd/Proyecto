@@ -1,7 +1,7 @@
 import { Component, OnInit, Input , OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import {SearchService} from "./searchservice";
+import {SearchService} from "../searchservice";
 import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 import {Observable} from "rxjs/Observable";
 import 'rxjs/add/observable/fromEvent';
@@ -15,11 +15,11 @@ import {IPageChangeEvent} from "@covalent/core";
 
 
 @Component({
-  selector: 'app-movies-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  selector: 'app-movies-searchmovies',
+  templateUrl: './searchmovies.component.html',
+  styleUrls: ['./searchmovies.component.css']
 })
-export class SearchComponent implements OnInit {
+export class SearchmoviesComponent implements OnInit {
 
   private details: Observable<any>;
   private detail: any[];
@@ -68,10 +68,9 @@ export class SearchComponent implements OnInit {
   redirect(){
     this.route.params.subscribe((params)=>{
 
-      this.appsearch.getSearchProduct(params.word).subscribe(
+      this.appsearch.getSearchMovies(params.word).subscribe(
         {
-          next: results => { this.movies = results
-          this.searchText = params.word},
+          next: results => { this.movies = results },
           error: err => { this.movies = [] },
           complete: () => {}
         }
@@ -81,8 +80,8 @@ export class SearchComponent implements OnInit {
   }
 
   doSearch() {
-     this.searchText = "" + this.route.snapshot.paramMap.get('word');
-         this.appsearch.getSearchProduct(this.searchText).subscribe(
+    this.searchText = "" + this.route.snapshot.paramMap.get('word');
+    this.appsearch.getSearchMovies(this.searchText).subscribe(
       {
         next: results => { this.movies = results },
         error: err => { this.movies = [] },
@@ -111,7 +110,7 @@ export class SearchComponent implements OnInit {
 
     this.route.params.subscribe((params)=> {
       console.log('updatedParams', params);
-      this.appsearch.getSearchProduct(params.word,this.control_page.page).subscribe(
+      this.appsearch.getSearchMovies(params.word,this.control_page.page).subscribe(
         {
           next: results => { this.movies = results },
           error: err => { this.movies = [] },

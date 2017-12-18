@@ -39,11 +39,65 @@ export class SearchService {
     } else {
 
     }
-    console.log(discover);
+
     return this.http
       .get(discover)
       .map(response => response.json());
 
 
   }
+
+  getSearchMovies(thing?: string,page?: number): Observable<any> {
+    let discover = this.theMovieDbUrl + 'search/movie' + '?api_key=8230c7ea8cb40f6fd40f8851a920b7bf';
+
+    if(thing){
+
+      discover += "&query=" + thing;
+
+    }else{
+
+
+    }
+    console.log(discover);
+    if (page) {
+      discover += "&page=" + page;
+    } else {
+
+    }
+
+    return this.http
+      .get(discover)
+      .map(response => response.json());
+
+
+  }
+
+
+
+  getSearchperson(thing?: string,page?: number): Observable<any> {
+    let discover = this.theMovieDbUrl + 'search/person' + '?api_key=8230c7ea8cb40f6fd40f8851a920b7bf';
+
+    if(thing){
+
+      discover += "&query=" + thing;
+
+    }else{
+
+
+    }
+
+    console.log(discover);
+    if (page) {
+      discover += "&page=" + page;
+    } else {
+
+    }
+
+    return this.http
+      .get(discover)
+      .map(response => response.json());
+
+
+  }
+
 }
