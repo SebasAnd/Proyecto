@@ -15,7 +15,7 @@
               <img class="card-img-top " [src]="test(detail.profile_path)" alt="Card image cap"  >
             </ng-template>
             <ng-template #imageFalse>
-              <img class="card-img-top " src="/assets/NoImage.png" alt="Card image cap"  >
+              <img class="card-img-top " src="assets/NoImage.png" alt="Card image cap"  >
             </ng-template>
 
           </div>
@@ -34,7 +34,7 @@
                   <img class="card-img-top " src="https://image.tmdb.org/t/p/w780/{{mov.poster_path}}" alt="Card image cap" routerLink='/Details/{{mov.id}}' >
                 </ng-template>
                 <ng-template #imageFalse>
-                  <img class="card-img-top " src="/assets/NoImage.png" alt="Card image cap" routerLink='/Details/{{mov.id}}' >
+                  <img class="card-img-top " src="assets/NoImage.png" alt="Card image cap" routerLink='/Details/{{mov.id}}' >
                 </ng-template>
 
                 <div class="card-body"  >
