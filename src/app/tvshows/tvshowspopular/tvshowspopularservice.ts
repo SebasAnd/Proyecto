@@ -14,7 +14,7 @@ import 'rxjs/add/operator/map';
 
 export class Tvshowspopularservice {
 
-  private theMovieDbUrl = 'http://api.themoviedb.org/3/';
+  private theMovieDbUrl = 'https://api.themoviedb.org/3/';
 
   private apiKey = '8230c7ea8cb40f6fd40f8851a920b7bf';
 
