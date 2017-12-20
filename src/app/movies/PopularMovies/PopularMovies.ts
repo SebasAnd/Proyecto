@@ -11,9 +11,9 @@ import {IPageChangeEvent} from "@covalent/core";
 })
 export class PopularMovies implements OnInit{
   title = 'app';
-  control_page: IPageChangeEvent;
+  public control_page: IPageChangeEvent;
   private Popular: Observable<any>;
-  private movies : JSON[];
+  public movies : JSON[];
   private error: any;
 
   ngOnInit(){

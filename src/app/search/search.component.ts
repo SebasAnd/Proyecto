@@ -23,9 +23,9 @@ export class SearchComponent implements OnInit {
 
   private details: Observable<any>;
   private detail: any[];
-  private movies: any;
-  control_page: IPageChangeEvent;
-  private  searchText : string;
+  public movies: any;
+  public control_page: IPageChangeEvent;
+  public  searchText : string;
   private busy : any;
   private err: any;
 

@@ -2,24 +2,24 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import {TvshowsDetailservice} from "./tvshows-detailservice";
+import { MoviesDetailService } from './movies-detailservice';
 import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 import {Observable} from "rxjs/Observable";
 
 
 @Component({
   selector: 'app-movies-detail',
-  templateUrl: './tvshows-detail.component.html',
-  styleUrls: ['./tvshows-detail.component.css']
+  templateUrl: './movies-detail.component.html',
+  styleUrls: ['./movies-detail.component.css']
 })
-export class TvshowsDetailComponent implements OnInit {
+export class MoviesDetailComponent implements OnInit {
 
   private details: Observable<any>;
-  private detail: any[];
+  public detail: any[];
   private err: any;
 
   private detailstrailer: Observable<any>;
-  private trailer;
+  public trailer;
   private errtrailer: any;
   public trustedDashboardUrl: SafeUrl;
   videoURL: string;
@@ -36,7 +36,7 @@ export class TvshowsDetailComponent implements OnInit {
 
   @Input() movie: any[];
 
-  constructor(private movieService: TvshowsDetailservice,
+  constructor(private movieService: MoviesDetailService,
               private route: ActivatedRoute,
               private sanitizer: DomSanitizer,) {
   }
@@ -44,16 +44,16 @@ export class TvshowsDetailComponent implements OnInit {
   ngOnInit() {
 
     //this.getTrailers();
-    this.getShow();
+    this.getMovie();
     this.redirect();
   }
   redirect(){
     this.route.params.subscribe((params)=> {
       console.log('updatedParams', params);
-      this.movieService.getShowdetail(params.id).subscribe(
+      this.movieService.getMoviedetail(params.id).subscribe(
         {
-          next: show => { this.detail = show;
-            this.trailer = show.videos['results'][0];
+          next: movie => { this.detail = movie;
+            this.trailer = movie.videos['results'][0];
             if(this.trailer){
 
               this.videoURL = 'https://www.youtube.com/embed/' + this.trailer.key;
@@ -71,10 +71,10 @@ export class TvshowsDetailComponent implements OnInit {
 
     });
   }
-  getShow(): void {
+  getMovie(): void {
     this.constant = "https://image.tmdb.org/t/p/w780/";
     const id = +this.route.snapshot.paramMap.get('id');
-    this.movieService.getShowdetail(id)
+    this.movieService.getMoviedetail(id)
       .subscribe(movie => {this.detail = movie;
 
         this.trailer = movie.videos['results'][0];
@@ -95,7 +95,7 @@ export class TvshowsDetailComponent implements OnInit {
 
   getTrailers(){
     const id = +this.route.snapshot.paramMap.get('id');
-    this.movieService.getShowTrailer(id)
+    this.movieService.getMovieTrailer(id)
       .subscribe(movie => {
         this.trailer = movie['results'][0];;
         this.videoURL = 'https://www.youtube.com/embed/' + this.trailer.key;

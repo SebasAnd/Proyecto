@@ -18,10 +18,10 @@ import {consoleTestResultsHandler} from "tslint/lib/test";
 export class TvshowspopularComponent implements OnInit{
   title = 'app';
 
-  control_page: IPageChangeEvent;
+  public control_page: IPageChangeEvent;
 
   private Incines: Observable<any>;
-  shows: any[];
+  public shows: any[];
   private err: any;
 
 

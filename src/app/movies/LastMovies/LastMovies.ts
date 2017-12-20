@@ -18,15 +18,15 @@ import {consoleTestResultsHandler} from "tslint/lib/test";
 export class LastMovies implements OnInit{
   title = 'app';
 
-  control_page: IPageChangeEvent;
+  public control_page: IPageChangeEvent;
 
   private Incines: Observable<any>;
-  movies: any[];
+  public movies: any[];
   private err: any;
 
 
   private Slidertop: Observable<any>;
-  private resultSlidertop: any[];
+  public resultSlidertop: any[];
   private errSlidertop: any;
 
   ngOnInit(){

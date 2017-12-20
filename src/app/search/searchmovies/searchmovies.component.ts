@@ -15,17 +15,17 @@ import {IPageChangeEvent} from "@covalent/core";
 
 
 @Component({
-  selector: 'app-movies-searchactors',
-  templateUrl: './searchactors.component.html',
-  styleUrls: ['./searchactors.component.css']
+  selector: 'app-movies-searchmovies',
+  templateUrl: './searchmovies.component.html',
+  styleUrls: ['./searchmovies.component.css']
 })
-export class SearchactorsComponent implements OnInit {
+export class SearchmoviesComponent implements OnInit {
 
   private details: Observable<any>;
   private detail: any[];
-  private actors: any;
-  control_page: IPageChangeEvent;
-  private  searchText : string;
+  public movies: any;
+  public control_page: IPageChangeEvent;
+  public  searchText : string;
   private busy : any;
   private err: any;
 
@@ -68,10 +68,10 @@ export class SearchactorsComponent implements OnInit {
   redirect(){
     this.route.params.subscribe((params)=>{
 
-      this.appsearch.getSearchperson(params.word).subscribe(
+      this.appsearch.getSearchMovies(params.word).subscribe(
         {
-          next: results => { this.actors = results },
-          error: err => { this.actors = [] },
+          next: results => { this.movies = results },
+          error: err => { this.movies = [] },
           complete: () => {}
         }
       );
@@ -81,10 +81,10 @@ export class SearchactorsComponent implements OnInit {
 
   doSearch() {
     this.searchText = "" + this.route.snapshot.paramMap.get('word');
-    this.appsearch.getSearchperson(this.searchText).subscribe(
+    this.appsearch.getSearchMovies(this.searchText).subscribe(
       {
-        next: results => { this.actors = results },
-        error: err => { this.actors = [] },
+        next: results => { this.movies = results },
+        error: err => { this.movies = [] },
         complete: () => {}
       }
     );
@@ -110,10 +110,10 @@ export class SearchactorsComponent implements OnInit {
 
     this.route.params.subscribe((params)=> {
       console.log('updatedParams', params);
-      this.appsearch.getSearchperson(params.word,this.control_page.page).subscribe(
+      this.appsearch.getSearchMovies(params.word,this.control_page.page).subscribe(
         {
-          next: results => { this.actors = results },
-          error: err => { this.actors = [] },
+          next: results => { this.movies = results },
+          error: err => { this.movies = [] },
           complete: () => {}
         }
       );
