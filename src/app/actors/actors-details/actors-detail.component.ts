@@ -15,11 +15,11 @@ import {ActorsDetailService} from "./actors-detailservice";
 export class ActorsDetailComponent implements OnInit {
 
   private details: Observable<any>;
-  private detail: any[];
+  public detail: any[];
   private err: any;
 
   private detailstrailer: Observable<any>;
-  private known : any[];
+  public known : any[];
   private errtrailer: any;
   public trustedDashboardUrl: SafeUrl;
   videoURL: string;

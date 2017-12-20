@@ -18,10 +18,10 @@ import {consoleTestResultsHandler} from "tslint/lib/test";
 export class LastActorsComponent implements OnInit{
   title = 'app';
 
-  control_page: IPageChangeEvent;
+  public control_page: IPageChangeEvent;
 
   private Incines: Observable<any>;
-  actors: any[];
+  public actors: any[];
   private err: any;
 
 

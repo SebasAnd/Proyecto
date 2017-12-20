@@ -15,17 +15,17 @@ import {IPageChangeEvent} from "@covalent/core";
 
 
 @Component({
-  selector: 'app-movies-searchtvshows',
-  templateUrl: './searchtvshows.component.html',
-  styleUrls: ['./searchtvshows.component.css']
+  selector: 'app-movies-searchactors',
+  templateUrl: './searchactors.component.html',
+  styleUrls: ['./searchactors.component.css']
 })
-export class SearchtvshowsComponent implements OnInit {
+export class SearchactorsComponent implements OnInit {
 
   private details: Observable<any>;
   private detail: any[];
-  private tvshows: any;
-  control_page: IPageChangeEvent;
-  private  searchText : string;
+  public actors: any;
+  public control_page: IPageChangeEvent;
+  public  searchText : string;
   private busy : any;
   private err: any;
 
@@ -68,10 +68,10 @@ export class SearchtvshowsComponent implements OnInit {
   redirect(){
     this.route.params.subscribe((params)=>{
 
-      this.appsearch.getSearchTvshows(params.word).subscribe(
+      this.appsearch.getSearchperson(params.word).subscribe(
         {
-          next: results => { this.tvshows = results },
-          error: err => { this.tvshows = [] },
+          next: results => { this.actors = results },
+          error: err => { this.actors = [] },
           complete: () => {}
         }
       );
@@ -81,10 +81,10 @@ export class SearchtvshowsComponent implements OnInit {
 
   doSearch() {
     this.searchText = "" + this.route.snapshot.paramMap.get('word');
-    this.appsearch.getSearchTvshows(this.searchText).subscribe(
+    this.appsearch.getSearchperson(this.searchText).subscribe(
       {
-        next: results => { this.tvshows = results },
-        error: err => { this.tvshows = [] },
+        next: results => { this.actors = results },
+        error: err => { this.actors = [] },
         complete: () => {}
       }
     );
@@ -110,10 +110,10 @@ export class SearchtvshowsComponent implements OnInit {
 
     this.route.params.subscribe((params)=> {
       console.log('updatedParams', params);
-      this.appsearch.getSearchTvshows(params.word,this.control_page.page).subscribe(
+      this.appsearch.getSearchperson(params.word,this.control_page.page).subscribe(
         {
-          next: results => { this.tvshows = results },
-          error: err => { this.tvshows = [] },
+          next: results => { this.actors = results },
+          error: err => { this.actors = [] },
           complete: () => {}
         }
       );

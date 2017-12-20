@@ -16,13 +16,13 @@ export class AppComponent implements OnInit{
   title = 'app';
 
   private Slidertop: Promise<any>;
-  private resultSlidertop: JSON[];
+  public resultSlidertop: JSON[];
   private errSlidertop: any;
 
   private details: Promise<any>;
-  private results: {};
+  public results: {};
   private router: Router;
-  private link : string;
+  public link : string;
   private test: boolean;
 
   private err: any;
