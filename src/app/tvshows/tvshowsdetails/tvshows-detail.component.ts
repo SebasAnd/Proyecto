@@ -49,7 +49,7 @@ export class TvshowsDetailComponent implements OnInit {
   }
   redirect(){
     this.route.params.subscribe((params)=> {
-      console.log('updatedParams', params);
+
       this.movieService.getShowdetail(params.id).subscribe(
         {
           next: show => { this.detail = show;
