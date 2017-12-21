@@ -22,6 +22,32 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
+## Content
+
+- Last movies List
+
+- Popular movies List
+
+- Movie detail
+
+- Tv shows list
+
+- Tv show detail
+
+- Actors List
+
+- Actor detail
+
+- Pagination of  lists 
+
+- Search generalized
+
+- Search of movies
+
+- Search of Actors
+
+- Search of Tv shows
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
